@@ -1,6 +1,11 @@
 @import '~shared/styles/index.scss';
 
 .main_view {
-    width: 60%;
+    width: 90%;
 }
-
+.main_view_list_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

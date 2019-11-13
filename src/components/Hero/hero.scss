@@ -1,2 +1,41 @@
 @import '~shared/styles/index.scss';
 
+.hero {
+    list-style: none;
+    background-color: $brand-second;
+    border: 2px solid darken($brand-second, 80);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 20px auto;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.img_container{
+    padding: 5px;
+}
+.info_container{
+    padding: 5px;
+    div:not(:first-of-type){
+        margin-top: 10px;
+    }
+}
+
+.hero_img {
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+        width: 100px;
+        height: auto;
+    }
+}
+
+.spi_list{
+    .spi{
+        list-style: none;
+    }
+}

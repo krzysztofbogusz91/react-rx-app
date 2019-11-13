@@ -11,8 +11,10 @@ function Main(props) {
     <div className={styles.main_view}>
       <Header />
       <SearchBar />
-      <HeroList heroesList={props.listOfHeroes} />
-      <ChosenList chosenList={props.team} />
+      <div className={styles.main_view_list_container}>
+        <HeroList heroesList={props.listOfHeroes} />
+        <ChosenList chosenList={props.team} />
+      </div>
     </div>);
 }
 Main.propTypes = {
