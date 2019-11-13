@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import styles from './style.scss';
+import Main from '../Main/main';
 
 class App extends Component {
   state = {
@@ -22,20 +23,9 @@ class App extends Component {
   }
 
   render() {
-    const heroesList = this.state.list.map(person => (<li key={person.created}>{person.name}</li>));
-    const chosenList = this.state.team.map(person => (<li key={person.created}>{person.name}</li>));
     return (
       <div className={styles.app}>
-        <h1 className={styles.header}> Gather the team before setting off </h1>
-        <div>
-          <label htmlFor="hero-inputs"> Search for heroes: <input /> </label>    
-        </div>
-        <ul>
-          {heroesList}
-        </ul>
-        <ul>
-          {chosenList.length > 0 ? chosenList : (<h2>No one chosen...</h2>)}
-        </ul>
+        <Main listOfHeroes={this.state.list} team={this.state.team} />
       </div>
     );
   }
