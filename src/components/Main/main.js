@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.scss';
+import ChosenList from '../ChosenList/chosen-list';
+import HeroList from '../HeroList/hero-list';
+import SearchBar from '../SearchBar/search-bar';
+import Header from '../Header/header';
 
 function Main(props) {
   const heroesList = props.listOfHeroes.map(person =>
@@ -9,16 +12,10 @@ function Main(props) {
 
   return (
     <div>
-      <h1 className="header"> Gather the team before setting off </h1>
-      <div>
-        <label htmlFor="hero-inputs">
-            Search for heroes: <input />
-        </label>
-      </div>
-      <ul>{heroesList}</ul>
-      <ul>
-        {chosenList.length > 0 ? chosenList : <h2>No one chosen...</h2>}
-      </ul>
+      <Header />
+      <SearchBar />
+      <HeroList heroesList={heroesList} />
+      <ChosenList chosenList={chosenList} />
     </div>);
 }
 Main.propTypes = {
