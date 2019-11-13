@@ -4,10 +4,13 @@
   margin: 0;
   padding: 0;
 }
-
-.app {
-  height: 100vh;
-  color: $white;
+body {
   background: $brand-primary;
+}
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
   font-family:  Verdana, sans-serif;
 }

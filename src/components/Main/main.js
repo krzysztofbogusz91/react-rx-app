@@ -4,18 +4,15 @@ import ChosenList from '../ChosenList/chosen-list';
 import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
+import styles from './main.scss';
 
 function Main(props) {
-  const heroesList = props.listOfHeroes.map(person =>
-    (<li key={person.created}>{person.name}</li>));
-  const chosenList = props.team.map(person => (<li key={person.created}>{person.name}</li>));
-
   return (
-    <div>
+    <div className={styles.main_view}>
       <Header />
       <SearchBar />
-      <HeroList heroesList={heroesList} />
-      <ChosenList chosenList={chosenList} />
+      <HeroList heroesList={props.listOfHeroes} />
+      <ChosenList chosenList={props.team} />
     </div>);
 }
 Main.propTypes = {
