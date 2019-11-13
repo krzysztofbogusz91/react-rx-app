@@ -4,7 +4,8 @@ import styles from './hero.scss';
 
 function Hero(props) {
   const image = <img src={props.person.img} alt="hero_avatar" />;
-  const spices = props.person.species.map(spi => (<li className={styles.spi} key={spi}> - {spi}</li>));
+  const spices = props.person.species
+    .map(spi => (<li className={styles.spi} key={spi}> - {spi}</li>));
   return (
     <li key={props.person.created} className={styles.hero}>
       <div className={styles.img_container}>
