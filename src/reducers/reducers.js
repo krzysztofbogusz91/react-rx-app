@@ -9,6 +9,7 @@ const heroApp = (state = initalState, action) => {
     case ADD_TO_CHOSEN:
       return ({
         ...state,
+        list: state.list.filter(hero => hero.name !== action.hero.name),
         team: [...state.team, action.hero],
       });
     case FETCH_HEROES_SUCCESS:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChosenList from '../ChosenList/chosen-list';
@@ -8,18 +8,24 @@ import Header from '../Header/header';
 import styles from './main.scss';
 import { getHeroes } from '../../actions/actions';
 
-function Main(props) {
-  props.getHeroes().then(() => {
-  });
-  return (
-    <div className={styles.main_view}>
-      <Header />
-      <SearchBar />
-      <div className={styles.main_view_list_container}>
-        <HeroList heroesList={props.listOfHeroes} />
-        <ChosenList chosenList={props.team} />
-      </div>
-    </div>);
+class Main extends Component {
+  state = {};
+
+  componentDidMount() {
+    this.props.getHeroes().then(() => {
+    });
+  }
+  render() {
+    return (
+      <div className={styles.main_view}>
+        <Header />
+        <SearchBar />
+        <div className={styles.main_view_list_container}>
+          <HeroList heroesList={this.props.listOfHeroes} />
+          <ChosenList chosenList={this.props.team} />
+        </div>
+      </div>);
+  }
 }
 Main.propTypes = {
   listOfHeroes: PropTypes.arrayOf(PropTypes.object),

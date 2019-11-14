@@ -7,7 +7,6 @@ import { addHero } from '../../actions/actions';
 
 function Hero(props) {
   function handleClick() {
-    console.log('click');
     props.addHero(props.person);
   }
   const image = <img src={props.person.img} alt="hero_avatar" />;
