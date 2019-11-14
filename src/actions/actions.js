@@ -10,10 +10,6 @@ export const getHeroes = () => dispatch =>
     .then((listOfHeroes) => {
       dispatch(getHeros(listOfHeroes.results
         .map((hero, id) => ({ ...hero, img: `https://i.pravatar.cc/200?img=${id + 1}` }))));
-    }, (err) => {
-      console.log(err);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }, err => err)
+    .catch(err => err);
 
