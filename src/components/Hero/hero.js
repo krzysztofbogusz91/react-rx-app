@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './hero.scss';
 
 function Hero(props) {
+  function handleClick() {
+    console.log('click');
+  }
   const image = <img src={props.person.img} alt="hero_avatar" />;
   const spices = props.person.species
     .map(spi => (<li className={styles.spi} key={spi}> - {spi}</li>));
@@ -29,6 +32,7 @@ function Hero(props) {
             { spices }
           </ul>
         </div>
+        <button href="#" onClick={handleClick}> Add to list...</button>
       </div>
     </li>);
 }
