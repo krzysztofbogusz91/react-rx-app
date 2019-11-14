@@ -6,10 +6,13 @@ import App from 'components/App';
 import registerServiceWorker from 'utils/registerServiceWorker';
 
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { createStore } from 'redux';
+import heroApp from './reducers/reducers';
+
+const store = createStore(heroApp);
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store} >
     <App />
   </Provider>,
   document.getElementById('root'),

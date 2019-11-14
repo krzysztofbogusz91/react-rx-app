@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ChosenList from '../ChosenList/chosen-list';
 import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
@@ -26,5 +27,7 @@ Main.defaultProps = {
   team: [],
 };
 
-export default Main;
+const mapStateToProps = state => ({ team: state.team });
+
+export default connect(mapStateToProps)(Main);
 

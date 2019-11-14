@@ -5,7 +5,6 @@ import style from './hero-list.scss';
 
 function HeroList(props) {
   const heroesList = props.heroesList
-    .map((hero, id) => ({ ...hero, img: `https://i.pravatar.cc/200?img=${id + 1}` }))
     .map(person =>
       (<Hero person={person} />));
   return (

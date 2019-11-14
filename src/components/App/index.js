@@ -13,7 +13,10 @@ class App extends Component {
       .then(resp => resp.json())
       .then((listOfHeroes) => {
         console.log(listOfHeroes);
-        this.setState({ list: listOfHeroes.results });
+        this.setState({
+          list: listOfHeroes.results
+            .map((hero, id) => ({ ...hero, img: `https://i.pravatar.cc/200?img=${id + 1}` })),
+        });
       }, (err) => {
         console.log(err);
       })

@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './hero.scss';
+import { addHero } from '../../actions/actions';
+
 
 function Hero(props) {
   function handleClick() {
     console.log('click');
+    props.addHero(props.person);
   }
   const image = <img src={props.person.img} alt="hero_avatar" />;
   const spices = props.person.species
@@ -46,6 +50,7 @@ Hero.propTypes = {
     hair_color: PropTypes.string,
     species: PropTypes.arrayOf(PropTypes.string),
   }),
+  addHero: PropTypes.func,
 };
 
 Hero.defaultProps = {
@@ -53,6 +58,12 @@ Hero.defaultProps = {
     img: '',
     species: [],
   },
+  addHero: null,
 };
-export default Hero;
+
+const mapDispatchToProps = dispatch => ({
+  addHero: hero => dispatch(addHero(hero)),
+});
+
+export default connect(null, mapDispatchToProps)(Hero);
 
