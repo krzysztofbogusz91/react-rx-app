@@ -37,10 +37,13 @@ function Hero(props) {
           <ul className={styles.spi_list}>
             { spices }
           </ul>
-        </div>{!props.isChosen ?
-          <button href="#" onClick={handleClickAdd}> Add to list...</button> :
-          <button href="#" onClick={handleClickRemove}> Remove forom list...</button>
-      }
+        </div>
+        <div>
+          {!props.isChosen ?
+            <button className={styles.btn_add} href="#" onClick={handleClickAdd}> Add to list...</button> :
+            <button className={styles.btn_remove} href="#" onClick={handleClickRemove}> Remove from list...</button>
+        }
+        </div>
       </div>
     </li>);
 }

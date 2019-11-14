@@ -15,7 +15,7 @@ const heroApp = (state = initialState, action) => {
     case REMOVE_FROM_CHOSEN:
       return ({
         ...state,
-        list: [...state.list, action.hero],
+        list: [action.hero, ...state.list],
         team: state.team.filter(hero => hero.name !== action.hero.name),
       });
     case FETCH_HEROES_SUCCESS:
