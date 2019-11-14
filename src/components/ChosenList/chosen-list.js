@@ -5,9 +5,8 @@ import Hero from '../Hero/hero';
 
 function ChosenList(props) {
   const chosenHeroes = props.chosenList
-    .map((hero, id) => ({ ...hero, img: `https://i.pravatar.cc/200?img=${id + 1}` }))
     .map(person =>
-      (<Hero person={person} />));
+      (<Hero isChosen={1} person={person} />));
 
   return (
     <div className={style.chosen_list_container}>

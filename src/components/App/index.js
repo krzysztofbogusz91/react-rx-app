@@ -8,19 +8,6 @@ class App extends Component {
     team: [],
     list: [],
   };
-  componentDidMount() {
-    fetch('https://swapi.co/api/people/')
-      .then(resp => resp.json())
-      .then((listOfHeroes) => {
-        console.log(listOfHeroes);
-        this.setState({ list: listOfHeroes.results });
-      }, (err) => {
-        console.log(err);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   render() {
     return (

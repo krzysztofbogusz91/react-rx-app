@@ -5,6 +5,18 @@ import 'normalize.css';
 import App from 'components/App';
 import registerServiceWorker from 'utils/registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import heroApp from './reducers/reducers';
+
+const store = createStore(heroApp, applyMiddleware(thunk));
+
+ReactDOM.render(
+  <Provider store={store} >
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
 
 registerServiceWorker();

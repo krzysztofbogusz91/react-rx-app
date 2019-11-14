@@ -1,10 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './hero.scss';
+import { addHero, removeHero } from '../../actions/actions';
+
 
 function Hero(props) {
-  function handleClick() {
-    console.log('click');
+  function handleClickAdd() {
+    props.addHero(props.person);
+  }
+  function handleClickRemove() {
+    props.removeHero(props.person);
   }
   const image = <img src={props.person.img} alt="hero_avatar" />;
   const spices = props.person.species
@@ -32,7 +38,12 @@ function Hero(props) {
             { spices }
           </ul>
         </div>
-        <button href="#" onClick={handleClick}> Add to list...</button>
+        <div>
+          {!props.isChosen ?
+            <button className={styles.btn_add} href="#" onClick={handleClickAdd}> Add to list...</button> :
+            <button className={styles.btn_remove} href="#" onClick={handleClickRemove}> Remove from list...</button>
+        }
+        </div>
       </div>
     </li>);
 }
@@ -46,6 +57,9 @@ Hero.propTypes = {
     hair_color: PropTypes.string,
     species: PropTypes.arrayOf(PropTypes.string),
   }),
+  addHero: PropTypes.func,
+  removeHero: PropTypes.func,
+  isChosen: PropTypes.number,
 };
 
 Hero.defaultProps = {
@@ -53,6 +67,15 @@ Hero.defaultProps = {
     img: '',
     species: [],
   },
+  addHero: null,
+  removeHero: null,
+  isChosen: 0,
 };
-export default Hero;
+
+const mapDispatchToProps = dispatch => ({
+  addHero: hero => dispatch(addHero(hero)),
+  removeHero: hero => dispatch(removeHero(hero)),
+});
+
+export default connect(null, mapDispatchToProps)(Hero);
 
