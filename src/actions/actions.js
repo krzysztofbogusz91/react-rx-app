@@ -1,7 +1,9 @@
 export const ADD_TO_CHOSEN = 'ADD_TO_CHOSEN';
 export const FETCH_HEROES_SUCCESS = 'FETCH_HEROES_SUCCESS';
+export const REMOVE_FROM_CHOSEN = 'REMOVE_FROM_CHOSEN';
 
 export const addHero = hero => ({ type: ADD_TO_CHOSEN, hero });
+export const removeHero = hero => ({ type: REMOVE_FROM_CHOSEN, hero });
 export const getHeros = heros => ({ type: FETCH_HEROES_SUCCESS, heros });
 
 export const getHeroes = () => dispatch =>

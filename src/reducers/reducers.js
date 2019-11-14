@@ -1,16 +1,22 @@
-import { ADD_TO_CHOSEN, FETCH_HEROES_SUCCESS } from '../actions/actions';
+import { ADD_TO_CHOSEN, FETCH_HEROES_SUCCESS, REMOVE_FROM_CHOSEN } from '../actions/actions';
 
-const initalState = {
+const initialState = {
   team: [],
   list: [],
 };
-const heroApp = (state = initalState, action) => {
+const heroApp = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CHOSEN:
       return ({
         ...state,
         list: state.list.filter(hero => hero.name !== action.hero.name),
         team: [...state.team, action.hero],
+      });
+    case REMOVE_FROM_CHOSEN:
+      return ({
+        ...state,
+        list: [...state.list, action.hero],
+        team: state.team.filter(hero => hero.name !== action.hero.name),
       });
     case FETCH_HEROES_SUCCESS:
       return ({

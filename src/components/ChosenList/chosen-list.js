@@ -6,7 +6,7 @@ import Hero from '../Hero/hero';
 function ChosenList(props) {
   const chosenHeroes = props.chosenList
     .map(person =>
-      (<Hero person={person} />));
+      (<Hero isChosen={1} person={person} />));
 
   return (
     <div className={style.chosen_list_container}>
