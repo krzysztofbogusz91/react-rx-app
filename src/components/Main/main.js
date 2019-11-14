@@ -6,8 +6,11 @@ import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
 import styles from './main.scss';
+import { getHeroes } from '../../actions/actions';
 
 function Main(props) {
+  props.getHeroes().then(() => {
+  });
   return (
     <div className={styles.main_view}>
       <Header />
@@ -21,13 +24,19 @@ function Main(props) {
 Main.propTypes = {
   listOfHeroes: PropTypes.arrayOf(PropTypes.object),
   team: PropTypes.arrayOf(PropTypes.object),
+  getHeroes: PropTypes.func,
 };
 Main.defaultProps = {
   listOfHeroes: [],
   team: [],
+  getHeroes: null,
 };
 
-const mapStateToProps = state => ({ team: state.team });
+const mapStateToProps = state => ({ team: state.team, listOfHeroes: state.list });
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = dispatch => ({
+  getHeroes: () => dispatch(getHeroes()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
