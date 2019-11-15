@@ -13,12 +13,21 @@ const getWorlds = list => Promise.all(list.map(async (hero) => {
   return { ...hero, homeworld: world.name };
 }));
 
+const getSpecies = list => Promise.all(list.map(async (hero) => {
+  const species = await (Promise.all(hero.species.map(async (spicie) => {
+      const spi = await fetch(spicie).then(resp => resp.json());
+      return spi.name
+    })));
+
+  return { ...hero, species: [...species] };
+}));
 export const getHeroes = () => dispatch =>
   fetch('https://swapi.co/api/people/')
     .then(resp => resp.json())
     .then(async (listOfHeroes) => {
       const herosWithHome = await getWorlds(listOfHeroes.results);
-      dispatch(getHeros(herosWithHome
+      const herosWithSpecies = await getSpecies(herosWithHome);
+      dispatch(getHeros(herosWithSpecies
         .map((hero, id) => ({ ...hero, img: `https://i.pravatar.cc/200?img=${id + 1}` }))));
     }, err => err)
     .catch(err => err);
