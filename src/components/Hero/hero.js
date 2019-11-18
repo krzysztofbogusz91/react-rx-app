@@ -5,7 +5,7 @@ import './hero.scss';
 import { addHero, removeHero } from '../../actions/actions';
 
 
-function Hero(props) {
+export function Hero(props) {
   const { person, isChosen } = props;
 
   function handleClickAdd() {
