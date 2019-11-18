@@ -6,27 +6,30 @@ import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
 import './main.scss';
-import { getHeroes } from '../../actions/actions';
+import * as getHeroesAction from '../../actions/actions';
 
 class Main extends Component {
-  state = {};
-
   componentDidMount() {
-    this.props.getHeroes().then(() => {
+    const { getHeroes } = this.props;
+    getHeroes().then(() => {
     });
   }
+
   render() {
+    const { listOfHeroes, team } = this.props;
     return (
-      <div className='main_view'>
+      <div className="main_view">
         <Header />
         <SearchBar />
-        <div className='main_view_list_container'>
-          <HeroList heroesList={this.props.listOfHeroes} />
-          <ChosenList chosenList={this.props.team} />
+        <div className="main_view_list_container">
+          <HeroList heroesList={listOfHeroes} />
+          <ChosenList chosenList={team} />
         </div>
-      </div>);
+      </div>
+    );
   }
 }
+
 Main.propTypes = {
   listOfHeroes: PropTypes.arrayOf(PropTypes.object),
   team: PropTypes.arrayOf(PropTypes.object),
@@ -38,11 +41,10 @@ Main.defaultProps = {
   getHeroes: null,
 };
 
-const mapStateToProps = state => ({ team: state.team, listOfHeroes: state.list });
+const mapStateToProps = (state) => ({ team: state.team, listOfHeroes: state.list });
 
-const mapDispatchToProps = dispatch => ({
-  getHeroes: () => dispatch(getHeroes()),
+const mapDispatchToProps = (dispatch) => ({
+  getHeroes: () => dispatch(getHeroesAction.getHeroes()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
-

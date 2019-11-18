@@ -6,46 +6,47 @@ import { addHero, removeHero } from '../../actions/actions';
 
 
 function Hero(props) {
+  const { person, isChosen } = { props };
   function handleClickAdd() {
-    props.addHero(props.person);
+    props.addHero(person);
   }
   function handleClickRemove() {
-    props.removeHero(props.person);
+    props.removeHero(person);
   }
-  const image = <img src={props.person.img} alt="hero_avatar" />;
-  const spices = props.person.species
-    .map(spi => (<li className='spi' key={spi}> - {spi}</li>));
+  const image = <img src={person.img} alt="hero_avatar" />;
+  const spices = person.species
+    .map((spi) => (<li className="spi" key={spi}> - {spi}</li>));
   return (
-    <li key={props.person.created} className='hero'>
-      <div className='img_container'>
-        <div className='hero_img'>
+    <li key={person.created} className="hero">
+      <div className="img_container">
+        <div className="hero_img">
           {image}
         </div>
       </div>
-      <div className='info_container'>
-        <div className='hero_name'>
-        Name: {props.person.name}
+      <div className="info_container">
+        <div className="hero_name">
+        Name: {person.name}
         </div>
         <div>
-          <span>Home World: {props.person.homeworld} </span>
+          <span>Home World: {person.homeworld} </span>
         </div>
         <div>
-        Hair Color: {props.person.hair_color}
+        Hair Color: {person.hair_color}
         </div>
         <div>
             Specie:
-          <ul className='spi_list'>
+          <ul className="spi_list">
             { spices }
           </ul>
         </div>
         <div>
-          {!props.isChosen ?
-            <button className='btn_add' href="#" onClick={handleClickAdd}> Add to list...</button> :
-            <button className='btn_remove' href="#" onClick={handleClickRemove}> Remove from list...</button>
-        }
+          {!isChosen
+            ? <button type="button" className="btn_add" href="#" onClick={handleClickAdd}> Add to list...</button>
+            : <button type="button" className="btn_remove" href="#" onClick={handleClickRemove}> Remove from list...</button>}
         </div>
       </div>
-    </li>);
+    </li>
+  );
 }
 
 Hero.propTypes = {
@@ -72,10 +73,9 @@ Hero.defaultProps = {
   isChosen: 0,
 };
 
-const mapDispatchToProps = dispatch => ({
-  addHero: hero => dispatch(addHero(hero)),
-  removeHero: hero => dispatch(removeHero(hero)),
+const mapDispatchToProps = (dispatch) => ({
+  addHero: (hero) => dispatch(addHero(hero)),
+  removeHero: (hero) => dispatch(removeHero(hero)),
 });
 
 export default connect(null, mapDispatchToProps)(Hero);
-

@@ -9,14 +9,14 @@ const heroApp = (state = initialState, action) => {
     case ADD_TO_CHOSEN:
       return ({
         ...state,
-        list: state.list.filter(hero => hero.name !== action.hero.name),
+        list: state.list.filter((hero) => hero.name !== action.hero.name),
         team: [...state.team, action.hero],
       });
     case REMOVE_FROM_CHOSEN:
       return ({
         ...state,
         list: [action.hero, ...state.list],
-        team: state.team.filter(hero => hero.name !== action.hero.name),
+        team: state.team.filter((hero) => hero.name !== action.hero.name),
       });
     case FETCH_HEROES_SUCCESS:
       return ({
