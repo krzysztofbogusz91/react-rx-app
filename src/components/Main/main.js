@@ -6,7 +6,7 @@ import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
 import './main.scss';
-import * as getHeroesAction from '../../actions/actions';
+import { getHeroesAction } from '../../actions/actions';
 
 class Main extends Component {
   componentDidMount() {
@@ -44,7 +44,7 @@ Main.defaultProps = {
 const mapStateToProps = (state) => ({ team: state.team, listOfHeroes: state.list });
 
 const mapDispatchToProps = (dispatch) => ({
-  getHeroes: () => dispatch(getHeroesAction.getHeroes()),
+  getHeroes: () => dispatch(getHeroesAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

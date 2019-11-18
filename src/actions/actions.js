@@ -21,7 +21,7 @@ const getSpecies = (list) => Promise.all(list.map(async (hero) => {
 
   return { ...hero, species: [...species] };
 }));
-export const getHeroes = () => (dispatch) => fetch('https://swapi.co/api/people/')
+export const getHeroesAction = () => (dispatch) => fetch('https://swapi.co/api/people/')
   .then((resp) => resp.json())
   .then(async (listOfHeroes) => {
     const herosWithHome = await getWorlds(listOfHeroes.results);

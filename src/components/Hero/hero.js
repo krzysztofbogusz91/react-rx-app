@@ -6,16 +6,20 @@ import { addHero, removeHero } from '../../actions/actions';
 
 
 function Hero(props) {
-  const { person, isChosen } = { props };
+  const { person, isChosen } = props;
+
   function handleClickAdd() {
     props.addHero(person);
   }
+
   function handleClickRemove() {
     props.removeHero(person);
   }
+
   const image = <img src={person.img} alt="hero_avatar" />;
   const spices = person.species
     .map((spi) => (<li className="spi" key={spi}> - {spi}</li>));
+
   return (
     <li key={person.created} className="hero">
       <div className="img_container">
