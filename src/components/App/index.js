@@ -3,15 +3,19 @@ import './style.scss';
 import Main from '../Main/main';
 
 class App extends Component {
-  state = {
-    team: [],
-    list: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      team: [],
+      list: [],
+    };
+  }
 
   render() {
+    const { list, team } = this.state;
     return (
-      <div className='app'>
-        <Main listOfHeroes={this.state.list} team={this.state.team} />
+      <div className="app">
+        <Main listOfHeroes={list} team={team} />
       </div>
     );
   }
