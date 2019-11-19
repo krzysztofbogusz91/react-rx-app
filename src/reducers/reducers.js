@@ -1,4 +1,4 @@
-import { ADD_TO_CHOSEN, FETCH_HEROES_SUCCESS, REMOVE_FROM_CHOSEN } from '../actions/actions';
+import { ADD_TO_CHOSEN, FETCH_HEROES_SUCCESS, REMOVE_FROM_CHOSEN } from '../actions/types';
 
 export const initialState = {
   team: [],

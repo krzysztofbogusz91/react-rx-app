@@ -6,7 +6,7 @@ import HeroList from '../HeroList/hero-list';
 import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
 import './main.scss';
-import { getHeroesAction } from '../../actions/actions';
+import { getHeroesAction } from '../../actions';
 
 class Main extends Component {
   componentDidMount() {

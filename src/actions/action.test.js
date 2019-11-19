@@ -1,4 +1,5 @@
-import { addHero, ADD_TO_CHOSEN } from './actions';
+import { addHero } from './index';
+import { ADD_TO_CHOSEN } from './types';
 
 describe('Action', () => {
   it('should add hero', () => {

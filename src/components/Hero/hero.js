@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './hero.scss';
-import { addHero, removeHero } from '../../actions/actions';
+import { addHero, removeHero } from '../../actions';
 
 
 export function Hero(props) {
