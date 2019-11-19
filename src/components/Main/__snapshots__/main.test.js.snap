@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should get data from api 1`] = `
+<div
+  className="main_view"
+>
+  <div>
+    <h1
+      className="header"
+    >
+       Gather the team before setting off: 
+    </h1>
+  </div>
+  <div
+    className="search_bar"
+  >
+    <div>
+      <label
+        htmlFor="hero-inputs"
+      >
+        Search for heroes: 
+        <input />
+      </label>
+    </div>
+  </div>
+  <div
+    className="main_view_list_container"
+  >
+    <div
+      className="hero_list_container"
+    >
+      <ul
+        className="hero_list"
+      >
+        <li
+          className="hero"
+        >
+          <div
+            className="img_container"
+          >
+            <div
+              className="hero_img"
+            >
+              <img
+                alt="hero_avatar"
+              />
+            </div>
+          </div>
+          <div
+            className="info_container"
+          >
+            <div
+              className="hero_name"
+            >
+              Name: 
+              Person 1
+            </div>
+            <div>
+              <span>
+                Home World: 
+                 
+              </span>
+            </div>
+            <div>
+              Hair Color: 
+            </div>
+            <div>
+              Specie:
+              <ul
+                className="spi_list"
+              />
+            </div>
+            <div>
+              <button
+                className="btn_add"
+                href="#"
+                onClick={[Function]}
+                type="button"
+              >
+                 Add to list...
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          className="hero"
+        >
+          <div
+            className="img_container"
+          >
+            <div
+              className="hero_img"
+            >
+              <img
+                alt="hero_avatar"
+              />
+            </div>
+          </div>
+          <div
+            className="info_container"
+          >
+            <div
+              className="hero_name"
+            >
+              Name: 
+              Person 2
+            </div>
+            <div>
+              <span>
+                Home World: 
+                 
+              </span>
+            </div>
+            <div>
+              Hair Color: 
+            </div>
+            <div>
+              Specie:
+              <ul
+                className="spi_list"
+              />
+            </div>
+            <div>
+              <button
+                className="btn_add"
+                href="#"
+                onClick={[Function]}
+                type="button"
+              >
+                 Add to list...
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="chosen_list_container"
+    >
+      <ul
+        className="chosen_list"
+      >
+        <li>
+          <h2
+            style={
+              Object {
+                "marginTop": "20px",
+              }
+            }
+          >
+            No one chosen...
+          </h2>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

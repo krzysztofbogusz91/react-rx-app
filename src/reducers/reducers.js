@@ -1,6 +1,6 @@
 import { ADD_TO_CHOSEN, FETCH_HEROES_SUCCESS, REMOVE_FROM_CHOSEN } from '../actions/actions';
 
-const initialState = {
+export const initialState = {
   team: [],
   list: [],
 };
