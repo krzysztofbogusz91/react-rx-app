@@ -11,9 +11,7 @@ import { getHeroesAction } from '../../actions';
 class Main extends Component {
   componentDidMount() {
     const { getHeroes } = this.props;
-    getHeroes().subscribe((data) => {
-      console.log(data);
-    });
+    getHeroes().subscribe();
   }
 
   render() {
