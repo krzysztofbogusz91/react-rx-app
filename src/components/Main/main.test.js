@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Main from './main';
-import { getHeroesAction } from '../../actions/actions';
+import { getHeroesAction } from '../../actions';
 
 const { act, create } = TestRenderer;
 const mockStore = configureStore([thunk]);
