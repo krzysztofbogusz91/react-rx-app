@@ -1,4 +1,5 @@
 import React from 'react';
+import { fromEvent } from 'rxjs';
 import './search-bar.scss';
 
 function SearchBar() {

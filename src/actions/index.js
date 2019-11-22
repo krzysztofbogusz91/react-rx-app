@@ -5,8 +5,9 @@ import {
   map,
   tap,
   flatMap,
+  catchError,
 } from 'rxjs/operators';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import 'rxjs/add/observable/of';
 
 import { ADD_TO_CHOSEN, REMOVE_FROM_CHOSEN, FETCH_HEROES_SUCCESS } from './types';
@@ -33,12 +34,23 @@ const getSpecies = (list) => forkJoin(list.map((hero) => fromFetch(hero.species[
 
 const addHeroPicture = (heroes) => heroes.map((hero, id) => ({ ...hero, img: `${imgUrl}${id + 1}` }));
 
+const handleResponse = (resp) => {
+  if (resp.ok) {
+    return resp.json();
+  } else {
+    return of({ error: true, message: `Error ${resp.status}` });
+  }
+} 
 export const getHeroesAction = () => (dispatch) => fromFetch(fetchUrl)
   .pipe(
-    switchMap((response) => response.json()),
+    switchMap((response) => handleResponse(response)),
     map((response) => response.results),
     flatMap((response) => getWorlds(response)),
     flatMap((response) => getSpecies(response)),
     map((response) => addHeroPicture(response)),
     tap((completeHeroes) => dispatch(getHeros(completeHeroes))),
+    catchError((err) => {
+      console.error(err);
+      return of({ error: true, message: err.message });
+    }),
   );
