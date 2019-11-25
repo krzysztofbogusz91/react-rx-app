@@ -7,11 +7,28 @@ import SearchBar from '../SearchBar/search-bar';
 import Header from '../Header/header';
 import './main.scss';
 import { getHeroesAction } from '../../actions';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 class Main extends Component {
+  constructor() {
+    super();
+    this.search$ = new Subject();
+    this.search = this.search$.asObservable().pipe(
+      debounceTime(500),
+    );
+  }
+
   componentDidMount() {
     const { getHeroes } = this.props;
     getHeroes().subscribe();
+    this.search.subscribe((text) => {
+      console.log(text);
+    });
+  }
+
+  onSearch = (e) => {
+    this.search$.next(e.target.value);
   }
 
   render() {
@@ -19,7 +36,7 @@ class Main extends Component {
     return (
       <div className="main_view">
         <Header />
-        <SearchBar />
+        <SearchBar onSearch={this.onSearch} />
         <div className="main_view_list_container">
           <HeroList heroesList={listOfHeroes} />
           <ChosenList chosenList={team} />
