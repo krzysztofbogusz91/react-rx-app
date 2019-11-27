@@ -5,6 +5,7 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { MainComponent, search } from './main';
 import { observeOn, map } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 configure({ adapter: new Adapter() });
 
@@ -29,21 +30,43 @@ xit("", () => {
 });
 
 it("should test with done callback map(v => v*v)", (done) => {
-  const source$ = from([1, 2, 3, 4, 5], asyncScheduler);
-  const result$ = source$.pipe(map(v => v * v));
+  const wrapper = shallow(<MainComponent />);
+  const shallowComponent = wrapper.instance();
+  shallowComponent.onSearch({ target: { value: 'text' } });
+  const source$ = of('1');
+  const result$ = source$.pipe(debounceTime(6500),observeOn(asyncScheduler));
   const spy = jest.fn(() => null);
-  const expectedValues = [1, 4, 9, 16, 25];
+
   console.log('testing');
   result$.subscribe({
     next: spy,
     complete: () => {
-      expect(spy).toHaveBeenCalledTimes(5);
-      expectedValues.forEach(v => {
-        console.log('v', v);     
-        expect(spy).toHaveBeenCalledWith('xds');
-      });
+      console.log('testing body');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith('1');
       done();
     }
   });
-  done();
+});
+
+it("should test with done callback map(v => v*v)", (done) => {
+  const wrapper = shallow(<MainComponent />);
+  const shallowComponent = wrapper.instance();
+  shallowComponent.onSearch({ target: { value: 'text' } });
+  const source$ = shallowComponent.search;
+  const result$ = source$.pipe(observeOn(asyncScheduler));
+  const spy = jest.fn(() => null);
+
+  console.log('testing 2');
+  result$.subscribe({
+    next: spy,
+    complete: () => {
+      console.log('testing body2');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith('no text');
+      done();
+    }
+  });
 });
