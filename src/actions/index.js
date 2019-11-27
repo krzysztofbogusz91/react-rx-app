@@ -20,7 +20,7 @@ export const removeHero = (hero) => ({ type: REMOVE_FROM_CHOSEN, hero });
 export const getHeros = (heros) => ({ type: FETCH_HEROES_SUCCESS, heros });
 
 
-const getWorlds = (list) => forkJoin(list.map((hero) => fromFetch(hero.homeworld)
+export const getWorlds = (list) => forkJoin(list.map((hero) => fromFetch(hero.homeworld)
   .pipe(
     switchMap((resp) => resp.json()),
     map((resp) => ({ ...hero, homeworld: resp.name })),

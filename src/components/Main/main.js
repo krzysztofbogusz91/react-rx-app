@@ -20,10 +20,8 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const { getHeroes } = this.props;
-    getHeroes().subscribe();
     this.search.subscribe((text) => {
-      console.log(text);
+      this.callApiToGetHeroes(text);
     });
   }
 
@@ -31,6 +29,10 @@ class Main extends Component {
     this.search$.next(e.target.value);
   }
 
+  callApiToGetHeroes(text) {
+    console.log(text);
+  }
+  
   render() {
     const { listOfHeroes, team } = this.props;
     return (
@@ -64,3 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export const MainComponent = Main;
