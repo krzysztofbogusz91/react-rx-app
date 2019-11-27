@@ -19,16 +19,13 @@ xit('it subscribes', (done) => {
     done();
   });
 });
-jest.useFakeTimers();
-xit("", (done) => {
+
+xit("", () => {
   const wrapper = shallow(<MainComponent />);
   const shallowComponent = wrapper.instance();
   shallowComponent.onSearch({ target: { value: 'text' } });
-  
   const spy = jest.spyOn(shallowComponent, 'callApiToGetHeroes');
   expect(spy).toHaveBeenCalled();
-  done();
-  jest.runAllTicks();
 });
 
 it("should test with done callback map(v => v*v)", (done) => {
